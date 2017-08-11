@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "build:umd": "BABEL_ENV=commonjs NODE_ENV=development webpack src/Link.js dist/redux-first-router-link.js",
-    "build:umd:min": "BABEL_ENV=commonjs NODE_ENV=production webpack src/Link.js dist/redux-first-router-link.min.js",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack src/Link.js dist/redux-first-router-link.js",
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack src/Link.js dist/redux-first-router-link.min.js",
     "flow-copy": "flow-copy-source src dist",
     "flow-watch": "clear; printf \"\\033[3J\" & npm run flow & fswatch -o ./ | xargs -n1 -I{} sh -c 'clear; printf \"\\033[3J\" && npm run flow'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -89,6 +89,7 @@
     ]
   },
   "dependencies": {
+    "cross-env": "^5.0.5",
     "path-to-regexp": "^1.7.0",
     "prop-types": "15.5.10",
     "rudy-match-path": "^0.1.0"
